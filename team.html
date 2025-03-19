@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Chhorepatan Secondary School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        :root {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .page-header {
+            background-image: url('public/images/school-building.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .page-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 32, 96, 0.85) 0%, rgba(0, 64, 128, 0.85) 100%);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #0ea5e9;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .team-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .team-card .social-links {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            background: rgba(7, 89, 133, 0.9);
+            padding: 10px;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        .team-card:hover .social-links {
+            bottom: 0;
+            opacity: 1;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f0f7ff',
+                            100: '#e0eeff',
+                            200: '#b0d0ff',
+                            300: '#80b3ff',
+                            400: '#5090ff',
+                            500: '#3070ff',
+                            600: '#1050ff',
+                            700: '#0040ff',
+                            800: '#0030c0',
+                            900: '#002080',
+                        },
+                        accent: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Top Bar -->
+    <div class="bg-primary-800 text-white py-1.5">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-6 text-sm mb-2 md:mb-0">
+                    <span class="flex items-center"><i class="fas fa-phone-alt mr-2"></i> +977-61-123456</span>
+                    <span class="flex items-center"><i class="fas fa-envelope mr-2"></i> info@chhorepatan.edu.np</span>
+                    <span class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Chhorepatan, Pokhara-17</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="flex items-center space-x-4">
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-4 border-l border-blue-700 pl-4">
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300 text-sm">Student Portal</a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300 text-sm">Staff Portal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Announcement Bar -->
+    <div class="bg-accent-500 text-white py-2">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center">
+                <div class="font-bold mr-4 bg-white text-accent-600 px-3 py-1 rounded-full text-sm">NOTICE</div>
+                <div class="marquee">
+                    <div class="marquee-content">
+                        🎓 Admissions open for 2024 academic year! | 🏆 Congratulations to our students for outstanding SEE results | 📢 Parent-Teacher meeting scheduled for October 15, 2023 | 🎭 Annual cultural program on December 18, 2023
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <img src="public/images/school-logo.png" alt="Chhorepatan Secondary School Logo" class="w-16 h-16 mr-4">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Chhorepatan Secondary School</h1>
+                        <p class="text-sm text-primary-600">Excellence in Education Since 2021</p>
+                    </div>
+                </div>
+                <nav class="hidden lg:flex">
+                    <ul class="flex space-x-8">
+                        <li><a href="index.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Home</a></li>
+                        <li><a href="about.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">About</a></li>
+                        <li><a href="team.html" class="nav-link active text-primary-600 font-medium transition duration-300">Our Team</a></li>
+                        <li><a href="courses.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Courses</a></li>
+                        <li><a href="facilities.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Facilities</a></li>
+                        <li><a href="notices.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Notices</a></li>
+                        <li><a href="gallery.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Gallery</a></li>
+                        <li><a href="contact.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="registration.html" class="hidden md:block btn-primary bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-6 rounded-full transition duration-300 shadow-md">Apply Now</a>
+                    <div class="lg:hidden">
+                        <button class="text-gray-700 focus:outline-none">
+                            <i class="fas fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header py-32 relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-4">Our Team</h2>
+            <div class="flex items-center text-white/80">
+                <a href="index.html" class="hover:text-white">Home</a>
+                <span class="mx-2">/</span>
+                <span>Our Team</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-primary-600 font-semibold mb-2">OUR LEADERSHIP</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">School Administration</h2>
+                <div class="w-24 h-1 bg-primary-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Meet the dedicated leaders who guide our school towards excellence.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center">
+                    <div class="relative mb-6 mx-auto w-48 h-48 rounded-full overflow-hidden border-4 border-primary-500 shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Principal" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">Dr. Rajesh Sharma</h3>
+                    <p class="text-primary-600 font-medium mb-4">Principal</p>
+                    <p class="text-gray-600 mb-4">PhD in Education with over 20 years of experience in educational leadership and administration.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-primary-600 hover:bg-primary-600 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-primary-600 hover:bg-primary-600 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-primary-600 hover:bg-primary-600 hover:text-white transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <div class="relative mb-6 mx-auto w-48 h-48 rounded-full overflow-hidden border-4 border-primary-500 shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Vice Principal" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">Aarati Thapa</h3>
+                    <p class="text-primary-600 font-medium mb-4">Vice Principal</p>
+                    <p class="text-gray-600 mb-4">Masters in Education with specialization in curriculum development and student affairs management.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-primary-600 hover:bg-primary-600 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-primary-600 hover:bg-primary-600 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-primary-600 hover:bg-primary-600 hover:text-white transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <div class="relative mb-6 mx-auto w-48 h-48 rounded-full overflow-hidden border-4 border-primary-500 shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Academic Coordinator" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">Sunita Gurung</h3>
+                    <p class="text-primary-600 font-medium mb-4">Academic Coordinator</p>
+                    <p class="text-gray-600 mb-4">Masters in Science Education with extensive experience in implementing innovative teaching methodologies.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-primary-600 hover:bg-primary-600 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-primary-600 hover:bg-primary-600 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-primary-600 hover:bg-primary-600 hover:text-white transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-primary-600 font-semibold mb-2">OUR EDUCATORS</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Teaching Faculty</h2>
+                <div class="w-24 h-1 bg-primary-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Our passionate and qualified teachers are dedicated to providing exceptional education.</p>
+            </div>
+            
+            <!-- Science Department -->
+            <div class="mb-16">
+                <h3 class="text-3xl font-bold text-center text-gray-800 mb-12 relative">
+                    <span class="bg-gray-50 px-6 relative z-10">Science Department</span>
+                    <span class="absolute inset-x-0 top-1/2 transform -translate-y-1/2 h-px bg-gray-300 z-0"></span>
+                </h3>
+                
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div class="team-card bg-white rounded-xl shadow-md overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Physics Teacher" class="w-full h-64 object-cover object-center">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-800">Dr. Asha Poudel</h4>
+                            <p class="text-primary-600 font-medium mb-2">Physics Teacher</p>
+                            <p class="text-gray-600 text-sm">PhD in Physics with 15 years of teaching experience at secondary and higher secondary levels.</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card bg-white rounded-xl shadow-md overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Chemistry Teacher" class="w-full h-64 object-cover object-center">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-800">Ramesh Shrestha</h4>
+                            <p class="text-primary-600 font-medium mb-2">Chemistry Teacher</p>
+                            <p class="text-gray-600 text-sm">MSc in Chemistry with specialization in organic chemistry and laboratory techniques.</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card bg-white rounded-xl shadow-md overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Biology Teacher" class="w-full h-64 object-cover object-center">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-800">Anjali Thapa</h4>
+                            <p class="text-primary-600 font-medium mb-2">Biology Teacher</p>
+                            <p class="text-gray-600 text-sm">MSc in Botany with research experience in plant physiology and environmental science.</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card bg-white rounded-xl shadow-md overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1500048993953-d23a436266cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Computer Science Teacher" class="w-full h-64 object-cover object-center">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-800">Dipak K.C.</h4>
+                            <p class="text-primary-600 font-medium mb-2">Computer Science Teacher</p>
+                            <p class="text-gray-600 text-sm">MSc in Computer Science with industry experience in software development and web technologies.</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mathematics Department -->
+            <div class="mb-16">
+                <h3 class="text-3xl font-bold text-center text-gray-800 mb-12 relative">
+                    <span class="bg-gray-50 px-6 relative z-10">Mathematics Department</span>
+                    <span class="absolute inset-x-0 top-1/2 transform -translate-y-1/2 h-px bg-gray-300 z-0"></span>
+                </h3>
+                
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div class="team-card bg-white rounded-xl shadow-md overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Mathematics Teacher" class="w-full h-64 object-cover object-center">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-800">Rajendra Adhikari</h4>
+                            <p class="text-primary-600 font-medium mb-2">Mathematics Head</p>
+                            <p class="text-gray-600 text-sm">MSc in Mathematics with specialization in algebra and calculus. Published several research papers.</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card bg-white rounded-xl shadow-md overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Mathematics Teacher" class="w-full h-64 object-cover object-center">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-800">Rita Bhattarai</h4>
+                            <p class="text-primary-600 font-medium mb-2">Mathematics Teacher</p>
+                            <p class="text-gray-600 text-sm">MSc in Applied Mathematics with a focus on statistics and probability theory.</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card bg-white rounded-xl shadow-md overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Mathematics Teacher" class="w-full h-64 object-cover object-center">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-800">Mukesh Pandey</h4>
+                            <p class="text-primary-600 font-medium mb-2">Mathematics Teacher</p>
+                            <p class="text-gray-600 text-sm">MSc in Mathematics with expertise in geometry and trigonometry. Known for making complex concepts easy to understand.</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card bg-white rounded-xl shadow-md overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1605993439219-9d09d2020fa5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Mathematics Teacher" class="w-full h-64 object-cover object-center">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-800">Sanjay Sharma</h4>
+                            <p class="text-primary-600 font-medium mb-2">Mathematics Teacher</p>
+                            <p class="text-gray-600 text-sm">BSc in Mathematics Education with special focus on teaching methodologies for middle school students.</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Languages & Social Sciences Department -->
+            <div>
+                <h3 class="text-3xl font-bold text-center text-gray-800 mb-12 relative">
+                    <span class="bg-gray-50 px-6 relative z-10">Languages & Social Sciences</span>
+                    <span class="absolute inset-x-0 top-1/2 transform -translate-y-1/2 h-px bg-gray-300 z-0"></span>
+                </h3>
+                
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div class="team-card bg-white rounded-xl shadow-md overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="English Teacher" class="w-full h-64 object-cover object-center">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-800">Sarah Wilson</h4>
+                            <p class="text-primary-600 font-medium mb-2">English Teacher</p>
+                            <p class="text-gray-600 text-sm">MA in English Literature with TESOL certification. Native English speaker with 10 years of teaching experience.</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card bg-white rounded-xl shadow-md overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Nepali Teacher" class="w-full h-64 object-cover object-center">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-800">Indira Basnet</h4>
+                            <p class="text-primary-600 font-medium mb-2">Nepali Teacher</p>
+                            <p class="text-gray-600 text-sm">MA in Nepali Literature with published works. Expert in teaching Nepali grammar and literature.</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card bg-white rounded-xl shadow-md overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Social Studies Teacher" class="w-full h-64 object-cover object-center">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-800">Prakash Karki</h4>
+                            <p class="text-primary-600 font-medium mb-2">Social Studies</p>
+                            <p class="text-gray-600 text-sm">MA in History with specialization in Nepalese history and politics. Makes history come alive in the classroom.</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card bg-white rounded-xl shadow-md overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Art Teacher" class="w-full h-64 object-cover object-center">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-800">Maya Tamang</h4>
+                            <p class="text-primary-600 font-medium mb-2">Arts & Music</p>
+                            <p class="text-gray-600 text-sm">BFA in Fine Arts and Music. Professional artist with exhibitions across Nepal, inspiring creativity in students.</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Staff Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-primary-600 font-semibold mb-2">BEHIND THE SCENES</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Administrative & Support Staff</h2>
+                <div class="w-24 h-1 bg-primary-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Meet the dedicated team that ensures smooth functioning of our school.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="team-card bg-white rounded-xl shadow-md overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1590086782957-93c06ef21604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Administrative Officer" class="w-full h-64 object-cover object-center">
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-gray-800">Shree Krishna Shrestha</h4>
+                        <p class="text-primary-600 font-medium mb-2">Administrative Officer</p>
+                        <p class="text-gray-600 text-sm">MBA with experience in educational administration. Oversees school operations and administration.</p>
+                    </div>
+                    <div class="social-links flex justify-center space-x-4">
+                        <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-card bg-white rounded-xl shadow-md overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1581593261297-cbb18dd9be89?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80" alt="Accountant" class="w-full h-64 object-cover object-center">
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-gray-800">Ram Bahadur Thapa</h4>
+                        <p class="text-primary-600 font-medium mb-2">Accountant</p>
+                        <p class="text-gray-600 text-sm">Bachelor's in Business with accounting specialization. Manages school finances and budget planning.</p>
+                    </div>
+                    <div class="social-links flex justify-center space-x-4">
+                        <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-card bg-white rounded-xl shadow-md overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1623605931891-d5b95ee98459?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Librarian" class="w-full h-64 object-cover object-center">
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-gray-800">Sabina Limbu</h4>
+                        <p class="text-primary-600 font-medium mb-2">Librarian</p>
+                        <p class="text-gray-600 text-sm">Bachelor's in Library Science. Manages the school library and promotes reading culture among students.</p>
+                    </div>
+                    <div class="social-links flex justify-center space-x-4">
+                        <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-card bg-white rounded-xl shadow-md overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1629114112651-a8c8c27fb09b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Lab Assistant" class="w-full h-64 object-cover object-center">
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-gray-800">Bishnu Dahal</h4>
+                        <p class="text-primary-600 font-medium mb-2">Lab Assistant</p>
+                        <p class="text-gray-600 text-sm">BSc in Science with lab management experience. Maintains science labs and assists in practical sessions.</p>
+                    </div>
+                    <div class="social-links flex justify-center space-x-4">
+                        <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Our Team Section -->
+    <section class="py-20 bg-primary-700 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Join Our Team</h2>
+                <p class="text-xl mb-8">We're always looking for passionate educators and staff who want to make a difference in students' lives. Check our current openings or send your CV for future opportunities.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#" class="btn-primary bg-white text-primary-700 hover:bg-gray-100 font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-xl">Current Openings</a>
+                    <a href="contact.html" class="border-2 border-white hover:bg-white/10 text-white font-bold py-3 px-8 rounded-full transition duration-300">Contact HR</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <img src="public/images/school-logo.png" alt="Chhorepatan Secondary School Logo" class="w-16 h-16 mr-4 bg-white p-2 rounded-lg">
+                        <div>
+                            <h3 class="text-xl font-bold">Chhorepatan Secondary School</h3>
+                            <p class="text-xs text-gray-400">Excellence in Education Since 2021</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6">Our mission is to provide quality education that empowers students to become lifelong learners, critical thinkers, and responsible citizens.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> About</a></li>
+                        <li><a href="team.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Our Team</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Courses</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Facilities</a></li>
+                        <li><a href="notices.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Notices</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Programs</h4>
+                    <ul class="space-y-3">
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Primary Level</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Lower Secondary</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Secondary Level</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Computer Lab</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Science Lab</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Library</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Contact Info</h4>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary-500"></i>
+                            <span>Chhorepatan, Pokhara-17, Kaski, Nepal</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-primary-500"></i>
+                            <span>+977-61-123456</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-primary-500"></i>
+                            <span>info@chhorepatan.edu.np</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-clock mt-1 mr-3 text-primary-500"></i>
+                            <span>Sunday - Friday: 10:00 AM - 4:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2023 Chhorepatan Secondary School. All rights reserved.</p>
+                <div class="mt-2 space-x-4">
+                    <a href="#" class="hover:text-white transition duration-300">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition duration-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize any JavaScript functionality here
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

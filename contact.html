@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Chhorepatan Secondary School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        :root {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .page-header {
+            background-image: url('public/images/school-building.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .page-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 32, 96, 0.85) 0%, rgba(0, 64, 128, 0.85) 100%);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #0ea5e9;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .contact-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .contact-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover .contact-icon {
+            transform: rotateY(180deg);
+        }
+        
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+        
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f0f7ff',
+                            100: '#e0eeff',
+                            200: '#b0d0ff',
+                            300: '#80b3ff',
+                            400: '#5090ff',
+                            500: '#3070ff',
+                            600: '#1050ff',
+                            700: '#0040ff',
+                            800: '#0030c0',
+                            900: '#002080',
+                        },
+                        accent: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Top Bar -->
+    <div class="bg-primary-800 text-white py-1.5">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-6 text-sm mb-2 md:mb-0">
+                    <span class="flex items-center"><i class="fas fa-phone-alt mr-2"></i> +977-61-123456</span>
+                    <span class="flex items-center"><i class="fas fa-envelope mr-2"></i> info@chhorepatan.edu.np</span>
+                    <span class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Chhorepatan, Pokhara-17</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="flex items-center space-x-4">
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-4 border-l border-blue-700 pl-4">
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300 text-sm">Student Portal</a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300 text-sm">Staff Portal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Announcement Bar -->
+    <div class="bg-accent-500 text-white py-2">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center">
+                <div class="font-bold mr-4 bg-white text-accent-600 px-3 py-1 rounded-full text-sm">NOTICE</div>
+                <div class="marquee">
+                    <div class="marquee-content">
+                        🎓 Admissions open for 2024 academic year! | 🏆 Congratulations to our students for outstanding SEE results | 📢 Parent-Teacher meeting scheduled for October 15, 2023 | 🎭 Annual cultural program on December 18, 2023
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <img src="public/images/school-logo.png" alt="Chhorepatan Secondary School Logo" class="w-16 h-16 mr-4">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Chhorepatan Secondary School</h1>
+                        <p class="text-sm text-primary-600">Excellence in Education Since 2021</p>
+                    </div>
+                </div>
+                <nav class="hidden lg:flex">
+                    <ul class="flex space-x-8">
+                        <li><a href="index.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Home</a></li>
+                        <li><a href="about.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">About</a></li>
+                        <li><a href="team.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Our Team</a></li>
+                        <li><a href="courses.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Courses</a></li>
+                        <li><a href="facilities.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Facilities</a></li>
+                        <li><a href="notices.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Notices</a></li>
+                        <li><a href="gallery.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Gallery</a></li>
+                        <li><a href="contact.html" class="nav-link active text-primary-600 font-medium transition duration-300">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="registration.html" class="hidden md:block btn-primary bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-6 rounded-full transition duration-300 shadow-md">Apply Now</a>
+                    <div class="lg:hidden">
+                        <button class="text-gray-700 focus:outline-none">
+                            <i class="fas fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header py-32 relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-4">Contact Us</h2>
+            <div class="flex items-center text-white/80">
+                <a href="index.html" class="hover:text-white">Home</a>
+                <span class="mx-2">/</span>
+                <span>Contact</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-primary-600 font-semibold mb-2">GET IN TOUCH</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Contact Information</h2>
+                <div class="w-24 h-1 bg-primary-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">We're here to help! Reach out to us with any questions, concerns, or feedback you may have.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Address -->
+                <div class="contact-card bg-white p-6 rounded-xl shadow-md text-center">
+                    <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4 contact-icon">
+                        <i class="fas fa-map-marker-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Our Location</h3>
+                    <p class="text-gray-600">Chhorepatan Secondary School</p>
+                    <p class="text-gray-600">Chhorepatan, Pokhara-17</p>
+                    <p class="text-gray-600">Kaski, Nepal</p>
+                    <a href="https://maps.google.com" target="_blank" class="inline-block mt-4 text-primary-600 hover:text-primary-800 font-semibold transition duration-300">View on Map <i class="fas fa-external-link-alt ml-1"></i></a>
+                </div>
+                
+                <!-- Phone -->
+                <div class="contact-card bg-white p-6 rounded-xl shadow-md text-center">
+                    <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4 contact-icon">
+                        <i class="fas fa-phone-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Phone Numbers</h3>
+                    <p class="text-gray-600">Main Office: +977-61-123456</p>
+                    <p class="text-gray-600">Admission Office: +977-61-123457</p>
+                    <p class="text-gray-600">Principal's Office: +977-61-123458</p>
+                    <a href="tel:+97761123456" class="inline-block mt-4 text-primary-600 hover:text-primary-800 font-semibold transition duration-300">Call Now <i class="fas fa-phone ml-1"></i></a>
+                </div>
+                
+                <!-- Email -->
+                <div class="contact-card bg-white p-6 rounded-xl shadow-md text-center">
+                    <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4 contact-icon">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Email Addresses</h3>
+                    <p class="text-gray-600">General Inquiries: info@chhorepatan.edu.np</p>
+                    <p class="text-gray-600">Admissions: admissions@chhorepatan.edu.np</p>
+                    <p class="text-gray-600">Principal: principal@chhorepatan.edu.np</p>
+                    <a href="mailto:info@chhorepatan.edu.np" class="inline-block mt-4 text-primary-600 hover:text-primary-800 font-semibold transition duration-300">Email Us <i class="fas fa-paper-plane ml-1"></i></a>
+                </div>
+            </div>
+            
+            <div class="mt-16 grid md:grid-cols-2 gap-8">
+                <!-- Office Hours -->
+                <div class="contact-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mr-4 contact-icon">
+                            <i class="fas fa-clock text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Office Hours</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Administrative Office</h4>
+                            <p class="text-gray-600">Sunday - Friday: 10:00 AM - 4:00 PM</p>
+                            <p class="text-gray-600">Saturday: Closed</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Admission Office</h4>
+                            <p class="text-gray-600">Sunday - Friday: 9:00 AM - 3:00 PM</p>
+                            <p class="text-gray-600">Saturday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Social Media -->
+                <div class="contact-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mr-4 contact-icon">
+                            <i class="fas fa-share-alt text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Connect With Us</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Follow us on social media to stay updated with the latest news and events.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition duration-300">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center text-white hover:bg-blue-500 transition duration-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center text-white hover:bg-pink-700 transition duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white hover:bg-red-700 transition duration-300">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-blue-800 rounded-full flex items-center justify-center text-white hover:bg-blue-900 transition duration-300">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-primary-600 font-semibold mb-2">SEND US A MESSAGE</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Get In Touch</h2>
+                <div class="w-24 h-1 bg-primary-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Have a question or need more information? Fill out the form below and we'll get back to you as soon as possible.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+                <form>
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Your Name <span class="text-red-500">*</span></label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Your Email <span class="text-red-500">*</span></label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject <span class="text-red-500">*</span></label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-medium mb-2">Message <span class="text-red-500">*</span></label>
+                        <textarea id="message" rows="6" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required></textarea>
+                    </div>
+                    <div class="mb-6">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="w-5 h-5 text-primary-600 border-gray-300 rounded focus:ring-primary-500">
+                            <span class="ml-2 text-gray-700">I agree to the <a href="#" class="text-primary-600 hover:text-primary-800">Privacy Policy</a> and <a href="#" class="text-primary-600 hover:text-primary-800">Terms of Service</a>.</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-primary bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 shadow-md hover:shadow-lg">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-primary-600 font-semibold mb-2">FIND US</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Our Location</h2>
+                <div class="w-24 h-1 bg-primary-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">We are conveniently located in Chhorepatan, Pokhara. Visit us to explore our campus and facilities.</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.908064158384!2d83.95999999999999!3d28.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDEyJzAwLjAiTiA4M8KwNTcnMzYuMCJF!5e0!3m2!1sen!2snp!4v1630000000000!5m2!1sen!2snp" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-directions text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Getting Here</h3>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">By Bus</h4>
+                            <p class="text-gray-600">Take any city bus heading to Chhorepatan and get off at Chhorepatan Chowk. The school is a 5-minute walk from there.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">By Taxi</h4>
+                            <p class="text-gray-600">Taxis are readily available throughout Pokhara. Ask the driver to take you to Chhorepatan Secondary School.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Parking</h4>
+                            <p class="text-gray-600">Visitor parking is available on campus. Please check in at the security gate upon arrival.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-primary-600 font-semibold mb-2">FREQUENTLY ASKED QUESTIONS</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Common Inquiries</h2>
+                <div class="w-24 h-1 bg-primary-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Find answers to commonly asked questions about our school and admission process.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <button class="flex justify-between items-center w-full text-left">
+                        <h3 class="text-xl font-bold text-gray-800">What are the admission requirements?</h3>
+                        <i class="fas fa-chevron-down text-primary-600"></i>
+                    </button>
+                    <div class="mt-4 text-gray-600">
+                        <p>Admission requirements vary by grade level. Generally, we require previous academic records, an entrance assessment, and an interview with the student and parents. Please visit our Admissions page or contact the Admissions Office for specific requirements.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <button class="flex justify-between items-center w-full text-left">
+                        <h3 class="text-xl font-bold text-gray-800">What are the school hours?</h3>
+                        <i class="fas fa-chevron-down text-primary-600"></i>
+                    </button>
+                    <div class="mt-4 text-gray-600">
+                        <p>School hours are from 9:00 AM to 3:30 PM, Sunday through Friday. The school is closed on Saturdays and public holidays.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <button class="flex justify-between items-center w-full text-left">
+                        <h3 class="text-xl font-bold text-gray-800">Do you provide transportation services?</h3>
+                        <i class="fas fa-chevron-down text-primary-600"></i>
+                    </button>
+                    <div class="mt-4 text-gray-600">
+                        <p>Yes, we provide transportation services for students. Our buses cover various routes across Pokhara. Transportation fees vary depending on the distance. Please contact the Administrative Office for more information.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <button class="flex justify-between items-center w-full text-left">
+                        <h3 class="text-xl font-bold text-gray-800">How can I schedule a campus tour?</h3>
+                        <i class="fas fa-chevron-down text-primary-600"></i>
+                    </button>
+                    <div class="mt-4 text-gray-600">
+                        <p>You can schedule a campus tour by contacting our Admissions Office at +977-61-123457 or by sending an email to admissions@chhorepatan.edu.np. Campus tours are available Monday through Friday from 10:00 AM to 2:00 PM.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-20 bg-primary-700 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Join Our School?</h2>
+                <p class="text-xl mb-8">Take the first step towards providing your child with an exceptional educational experience. Applications for the 2024 academic year are now open.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="registration.html" class="btn-primary bg-white text-primary-700 hover:bg-gray-100 font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-xl">Apply Now</a>
+                    <a href="#" class="border-2 border-white hover:bg-white/10 text-white font-bold py-3 px-8 rounded-full transition duration-300">Download Brochure</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <img src="public/images/school-logo.png" alt="Chhorepatan Secondary School Logo" class="w-16 h-16 mr-4 bg-white p-2 rounded-lg">
+                        <div>
+                            <h3 class="text-xl font-bold">Chhorepatan Secondary School</h3>
+                            <p class="text-xs text-gray-400">Excellence in Education Since 2021</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6">Our mission is to provide quality education that empowers students to become lifelong learners, critical thinkers, and responsible citizens.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> About</a></li>
+                        <li><a href="team.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Our Team</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Courses</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Facilities</a></li>
+                        <li><a href="notices.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Notices</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Programs</h4>
+                    <ul class="space-y-3">
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Primary Level</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Lower Secondary</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Secondary Level</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Computer Lab</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Science Lab</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Library</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Contact Info</h4>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary-500"></i>
+                            <span>Chhorepatan, Pokhara-17, Kaski, Nepal</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-primary-500"></i>
+                            <span>+977-61-123456</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-primary-500"></i>
+                            <span>info@chhorepatan.edu.np</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-clock mt-1 mr-3 text-primary-500"></i>
+                            <span>Sunday - Friday: 10:00 AM - 4:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2023 Chhorepatan Secondary School. All rights reserved.</p>
+                <div class="mt-2 space-x-4">
+                    <a href="#" class="hover:text-white transition duration-300">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition duration-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize any JavaScript functionality here
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // FAQ accordion functionality
+            document.querySelectorAll('.bg-white button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('i');
+                    
+                    if (content.style.display === 'none' || content.style.display === '') {
+                        content.style.display = 'block';
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    } else {
+                        content.style.display = 'none';
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

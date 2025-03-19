@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notices - Chhorepatan Secondary School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        :root {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .page-header {
+            background-image: url('public/images/school-building.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .page-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 32, 96, 0.85) 0%, rgba(0, 64, 128, 0.85) 100%);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #0ea5e9;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .notice-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .notice-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: #e0f2fe;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 24px;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            background-color: #0ea5e9;
+        }
+        
+        .timeline-item:hover::after {
+            background-color: #f59e0b;
+            transform: scale(1.5);
+            transition: all 0.3s ease;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .tab-btn {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -2px;
+            left: 0;
+            background-color: #0ea5e9;
+            transition: width 0.3s ease;
+        }
+        
+        .tab-btn.active::after {
+            width: 100%;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f0f7ff',
+                            100: '#e0eeff',
+                            200: '#b0d0ff',
+                            300: '#80b3ff',
+                            400: '#5090ff',
+                            500: '#3070ff',
+                            600: '#1050ff',
+                            700: '#0040ff',
+                            800: '#0030c0',
+                            900: '#002080',
+                        },
+                        accent: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Top Bar -->
+    <div class="bg-primary-800 text-white py-1.5">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-6 text-sm mb-2 md:mb-0">
+                    <span class="flex items-center"><i class="fas fa-phone-alt mr-2"></i> +977-61-123456</span>
+                    <span class="flex items-center"><i class="fas fa-envelope mr-2"></i> info@chhorepatan.edu.np</span>
+                    <span class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Chhorepatan, Pokhara-17</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="flex items-center space-x-4">
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-4 border-l border-blue-700 pl-4">
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300 text-sm">Student Portal</a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300 text-sm">Staff Portal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Announcement Bar -->
+    <div class="bg-accent-500 text-white py-2">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center">
+                <div class="font-bold mr-4 bg-white text-accent-600 px-3 py-1 rounded-full text-sm">NOTICE</div>
+                <div class="marquee">
+                    <div class="marquee-content">
+                        🎓 Admissions open for 2024 academic year! | 🏆 Congratulations to our students for outstanding SEE results | 📢 Parent-Teacher meeting scheduled for October 15, 2023 | 🎭 Annual cultural program on December 18, 2023
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <img src="public/images/school-logo.png" alt="Chhorepatan Secondary School Logo" class="w-16 h-16 mr-4">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Chhorepatan Secondary School</h1>
+                        <p class="text-sm text-primary-600">Excellence in Education Since 2021</p>
+                    </div>
+                </div>
+                <nav class="hidden lg:flex">
+                    <ul class="flex space-x-8">
+                        <li><a href="index.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Home</a></li>
+                        <li><a href="about.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">About</a></li>
+                        <li><a href="team.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Our Team</a></li>
+                        <li><a href="courses.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Courses</a></li>
+                        <li><a href="facilities.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Facilities</a></li>
+                        <li><a href="notices.html" class="nav-link active text-primary-600 font-medium transition duration-300">Notices</a></li>
+                        <li><a href="gallery.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Gallery</a></li>
+                        <li><a href="contact.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="registration.html" class="hidden md:block btn-primary bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-6 rounded-full transition duration-300 shadow-md">Apply Now</a>
+                    <div class="lg:hidden">
+                        <button class="text-gray-700 focus:outline-none">
+                            <i class="fas fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header py-32 relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-4">Notices & Announcements</h2>
+            <div class="flex items-center text-white/80">
+                <a href="index.html" class="hover:text-white">Home</a>
+                <span class="mx-2">/</span>
+                <span>Notices</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notice Categories Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-primary-600 font-semibold mb-2">STAY UPDATED</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">School Notices</h2>
+                <div class="w-24 h-1 bg-primary-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Stay informed about the latest announcements, events, and activities at Chhorepatan Secondary School.</p>
+            </div>
+            
+            <!-- Tabs Navigation -->
+            <div class="flex flex-wrap justify-center mb-12">
+                <button class="tab-btn active px-8 py-4 text-lg font-bold text-gray-800 hover:text-primary-600 transition duration-300" data-tab="all">All Notices</button>
+                <button class="tab-btn px-8 py-4 text-lg font-bold text-gray-800 hover:text-primary-600 transition duration-300" data-tab="admissions">Admissions</button>
+                <button class="tab-btn px-8 py-4 text-lg font-bold text-gray-800 hover:text-primary-600 transition duration-300" data-tab="events">Events</button>
+                <button class="tab-btn px-8 py-4 text-lg font-bold text-gray-800 hover:text-primary-600 transition duration-300" data-tab="exams">Examinations</button>
+            </div>
+            
+            <!-- Search and Filter -->
+            <div class="bg-gray-50 p-6 rounded-xl shadow-md mb-12">
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div>
+                        <label for="search" class="block text-gray-700 font-medium mb-2">Search Notices</label>
+                        <div class="relative">
+                            <input type="text" id="search" placeholder="Search by keyword..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 pl-10">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="category" class="block text-gray-700 font-medium mb-2">Category</label>
+                        <select id="category" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                            <option value="">All Categories</option>
+                            <option value="admissions">Admissions</option>
+                            <option value="events">Events</option>
+                            <option value="exams">Examinations</option>
+                            <option value="holidays">Holidays</option>
+                            <option value="general">General</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="date" class="block text-gray-700 font-medium mb-2">Date Range</label>
+                        <select id="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                            <option value="">All Time</option>
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="year">This Year</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab Content -->
+            <div class="tab-content active" id="all">
+                <!-- Featured Notice -->
+                <div class="bg-primary-50 border-l-4 border-primary-500 p-6 rounded-r-xl shadow-md mb-12">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-bullhorn text-xl"></i>
+                        </div>
+                        <div>
+                            <span class="bg-primary-100 text-primary-700 text-xs font-bold px-2 py-1 rounded-full">IMPORTANT</span>
+                            <h3 class="text-2xl font-bold text-gray-800">Admissions Open for 2024 Academic Year</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Applications are now being accepted for the 2024 academic year for all grades. Limited seats available, apply early to secure your child's spot.</p>
+                    <div class="flex flex-wrap items-center justify-between">
+                        <div class="flex items-center text-gray-500 text-sm mb-2 md:mb-0">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>Posted on: September 15, 2023</span>
+                            <span class="mx-3">|</span>
+                            <i class="far fa-clock mr-2"></i>
+                            <span>Last Date: November 30, 2023</span>
+                        </div>
+                        <a href="#" class="inline-block bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-6 rounded-full transition duration-300 shadow-md">Read More</a>
+                    </div>
+                </div>
+                
+                <!-- Notice Timeline -->
+                <div class="space-y-8">
+                    <!-- Notice 1 -->
+                    <div class="timeline-item notice-card bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex flex-wrap justify-between items-start mb-4">
+                            <div>
+                                <span class="bg-accent-100 text-accent-700 text-xs font-bold px-2 py-1 rounded-full">EVENT</span>
+                                <h3 class="text-xl font-bold text-gray-800 mt-2">Annual Cultural Program</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-gray-500 text-sm">
+                                    <i class="far fa-calendar-alt mr-1"></i> December 18, 2023
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Join us for an evening of cultural performances showcasing the talents of our students. The program will include music, dance, drama, and more.</p>
+                        <div class="flex flex-wrap items-center justify-between">
+                            <div class="text-gray-500 text-sm mb-2 md:mb-0">
+                                <i class="far fa-clock mr-1"></i> 4:00 PM - 8:00 PM
+                                <span class="mx-2">|</span>
+                                <i class="fas fa-map-marker-alt mr-1"></i> School Auditorium
+                            </div>
+                            <a href="#" class="text-primary-600 hover:text-primary-800 font-semibold transition duration-300">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Notice 2 -->
+                    <div class="timeline-item notice-card bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex flex-wrap justify-between items-start mb-4">
+                            <div>
+                                <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-full">MEETING</span>
+                                <h3 class="text-xl font-bold text-gray-800 mt-2">Parent-Teacher Meeting</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-gray-500 text-sm">
+                                    <i class="far fa-calendar-alt mr-1"></i> October 15, 2023
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">All parents are requested to attend the Parent-Teacher Meeting to discuss their child's academic progress and address any concerns.</p>
+                        <div class="flex flex-wrap items-center justify-between">
+                            <div class="text-gray-500 text-sm mb-2 md:mb-0">
+                                <i class="far fa-clock mr-1"></i> 10:00 AM - 3:00 PM
+                                <span class="mx-2">|</span>
+                                <i class="fas fa-map-marker-alt mr-1"></i> Respective Classrooms
+                            </div>
+                            <a href="#" class="text-primary-600 hover:text-primary-800 font-semibold transition duration-300">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Notice 3 -->
+                    <div class="timeline-item notice-card bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex flex-wrap justify-between items-start mb-4">
+                            <div>
+                                <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-full">EXAM</span>
+                                <h3 class="text-xl font-bold text-gray-800 mt-2">First Term Examination Schedule</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-gray-500 text-sm">
+                                    <i class="far fa-calendar-alt mr-1"></i> October 5, 2023
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">The first term examination for all grades will be held from October 25 to November 5, 2023. Please find the detailed schedule attached.</p>
+                        <div class="flex flex-wrap items-center justify-between">
+                            <div class="text-gray-500 text-sm mb-2 md:mb-0">
+                                <i class="fas fa-paperclip mr-1"></i> Exam Schedule.pdf
+                            </div>
+                            <a href="#" class="text-primary-600 hover:text-primary-800 font-semibold transition duration-300">Download Schedule <i class="fas fa-download ml-1"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Notice 4 -->
+                    <div class="timeline-item notice-card bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex flex-wrap justify-between items-start mb-4">
+                            <div>
+                                <span class="bg-purple-100 text-purple-700 text-xs font-bold px-2 py-1 rounded-full">COMPETITION</span>
+                                <h3 class="text-xl font-bold text-gray-800 mt-2">Inter-School Science Competition</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-gray-500 text-sm">
+                                    <i class="far fa-calendar-alt mr-1"></i> September 28, 2023
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Chhorepatan Secondary School will be hosting an Inter-School Science Competition on November 10, 2023. Students interested in participating should register by October 15.</p>
+                        <div class="flex flex-wrap items-center justify-between">
+                            <div class="text-gray-500 text-sm mb-2 md:mb-0">
+                                <i class="far fa-clock mr-1"></i> 9:00 AM - 4:00 PM
+                                <span class="mx-2">|</span>
+                                <i class="fas fa-map-marker-alt mr-1"></i> School Science Labs
+                            </div>
+                            <a href="#" class="text-primary-600 hover:text-primary-800 font-semibold transition duration-300">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Notice 5 -->
+                    <div class="timeline-item notice-card bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex flex-wrap justify-between items-start mb-4">
+                            <div>
+                                <span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded-full">HOLIDAY</span>
+                                <h3 class="text-xl font-bold text-gray-800 mt-2">Dashain Vacation Notice</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-gray-500 text-sm">
+                                    <i class="far fa-calendar-alt mr-1"></i> September 20, 2023
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">The school will remain closed for Dashain vacation from October 10 to October 24, 2023. Classes will resume on October 25, 2023.</p>
+                        <div class="flex flex-wrap items-center justify-between">
+                            <div class="text-gray-500 text-sm mb-2 md:mb-0">
+                                <i class="fas fa-info-circle mr-1"></i> Regular classes on October 9 until 12:00 PM
+                            </div>
+                            <a href="#" class="text-primary-600 hover:text-primary-800 font-semibold transition duration-300">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="mt-12 flex justify-center">
+                    <nav class="inline-flex rounded-md shadow">
+                        <a href="#" class="py-2 px-4 bg-white border border-gray-300 rounded-l-md text-gray-700 hover:bg-gray-50">Previous</a>
+                        <a href="#" class="py-2 px-4 bg-primary-600 border border-primary-600 text-white">1</a>
+                        <a href="#" class="py-2 px-4 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50">2</a>
+                        <a href="#" class="py-2 px-4 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50">3</a>
+                        <a href="#" class="py-2 px-4 bg-white border border-gray-300 rounded-r-md text-gray-700 hover:bg-gray-50">Next</a>
+                    </nav>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="admissions">
+                <!-- Admissions Notices Content -->
+                <div class="space-y-8">
+                    <!-- Admission Notice 1 -->
+                    <div class="timeline-item notice-card bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex flex-wrap justify-between items-start mb-4">
+                            <div>
+                                <span class="bg-primary-100 text-primary-700 text-xs font-bold px-2 py-1 rounded-full">ADMISSION</span>
+                                <h3 class="text-xl font-bold text-gray-800 mt-2">Admissions Open for 2024 Academic Year</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-gray-500 text-sm">
+                                    <i class="far fa-calendar-alt mr-1"></i> September 15, 2023
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Applications are now being accepted for the 2024 academic year for all grades. Limited seats available, apply early to secure your child's spot.</p>
+                        <div class="flex flex-wrap items-center justify-between">
+                            <div class="text-gray-500 text-sm mb-2 md:mb-0">
+                                <i class="far fa-clock mr-1"></i> Last Date: November 30, 2023
+                            </div>
+                            <a href="#" class="text-primary-600 hover:text-primary-800 font-semibold transition duration-300">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Admission Notice 2 -->
+                    <div class="timeline-item notice-card bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex flex-wrap justify-between items-start mb-4">
+                            <div>
+                                <span class="bg-primary-100 text-primary-700 text-xs font-bold px-2 py-1 rounded-full">ADMISSION</span>
+                                <h3 class="text-xl font-bold text-gray-800 mt-2">Entrance Examination Schedule</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-gray-500 text-sm">
+                                    <i class="far fa-calendar-alt mr-1"></i> October 1, 2023
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Entrance examinations for new admissions will be conducted from November 5 to November 10, 2023. The detailed schedule and syllabus are available on the school website.</p>
+                        <div class="flex flex-wrap items-center justify-between">
+                            <div class="text-gray-500 text-sm mb-2 md:mb-0">
+                                <i class="fas fa-paperclip mr-1"></i> Entrance Exam Syllabus.pdf
+                            </div>
+                            <a href="#" class="text-primary-600 hover:text-primary-800 font-semibold transition duration-300">Download Syllabus <i class="fas fa-download ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="events">
+                <!-- Events Notices Content -->
+                <div class="space-y-8">
+                    <!-- Event Notice 1 -->
+                    <div class="timeline-item notice-card bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex flex-wrap justify-between items-start mb-4">
+                            <div>
+                                <span class="bg-accent-100 text-accent-700 text-xs font-bold px-2 py-1 rounded-full">EVENT</span>
+                                <h3 class="text-xl font-bold text-gray-800 mt-2">Annual Cultural Program</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-gray-500 text-sm">
+                                    <i class="far fa-calendar-alt mr-1"></i> December 18, 2023
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Join us for an evening of cultural performances showcasing the talents of our students. The program will include music, dance, drama, and more.</p>
+                        <div class="flex flex-wrap items-center justify-between">
+                            <div class="text-gray-500 text-sm mb-2 md:mb-0">
+                                <i class="far fa-clock mr-1"></i> 4:00 PM - 8:00 PM
+                                <span class="mx-2">|</span>
+                                <i class="fas fa-map-marker-alt mr-1"></i> School Auditorium
+                            </div>
+                            <a href="#" class="text-primary-600 hover:text-primary-800 font-semibold transition duration-300">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Event Notice 2 -->
+                    <div class="timeline-item notice-card bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex flex-wrap justify-between items-start mb-4">
+                            <div>
+                                <span class="bg-purple-100 text-purple-700 text-xs font-bold px-2 py-1 rounded-full">COMPETITION</span>
+                                <h3 class="text-xl font-bold text-gray-800 mt-2">Inter-School Science Competition</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-gray-500 text-sm">
+                                    <i class="far fa-calendar-alt mr-1"></i> November 10, 2023
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Chhorepatan Secondary School will be hosting an Inter-School Science Competition. Students interested in participating should register by October 15.</p>
+                        <div class="flex flex-wrap items-center justify-between">
+                            <div class="text-gray-500 text-sm mb-2 md:mb-0">
+                                <i class="far fa-clock mr-1"></i> 9:00 AM - 4:00 PM
+                                <span class="mx-2">|</span>
+                                <i class="fas fa-map-marker-alt mr-1"></i> School Science Labs
+                            </div>
+                            <a href="#" class="text-primary-600 hover:text-primary-800 font-semibold transition duration-300">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="exams">
+                <!-- Exams Notices Content -->
+                <div class="space-y-8">
+                    <!-- Exam Notice 1 -->
+                    <div class="timeline-item notice-card bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex flex-wrap justify-between items-start mb-4">
+                            <div>
+                                <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-full">EXAM</span>
+                                <h3 class="text-xl font-bold text-gray-800 mt-2">First Term Examination Schedule</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-gray-500 text-sm">
+                                    <i class="far fa-calendar-alt mr-1"></i> October 5, 2023
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">The first term examination for all grades will be held from October 25 to November 5, 2023. Please find the detailed schedule attached.</p>
+                        <div class="flex flex-wrap items-center justify-between">
+                            <div class="text-gray-500 text-sm mb-2 md:mb-0">
+                                <i class="fas fa-paperclip mr-1"></i> Exam Schedule.pdf
+                            </div>
+                            <a href="#" class="text-primary-600 hover:text-primary-800 font-semibold transition duration-300">Download Schedule <i class="fas fa-download ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Section -->
+    <section class="py-20 bg-primary-700 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-6">Subscribe to Our Newsletter</h2>
+                <p class="text-xl mb-8">Stay updated with the latest news, events, and announcements from Chhorepatan Secondary School.</p>
+                <form class="max-w-xl mx-auto">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg focus:outline-none text-gray-800">
+                        <button type="submit" class="bg-accent-500 hover:bg-accent-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">Subscribe</button>
+                    </div>
+                    <p class="text-sm mt-4 text-white/70">We respect your privacy and will never share your information with third parties.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <img src="public/images/school-logo.png" alt="Chhorepatan Secondary School Logo" class="w-16 h-16 mr-4 bg-white p-2 rounded-lg">
+                        <div>
+                            <h3 class="text-xl font-bold">Chhorepatan Secondary School</h3>
+                            <p class="text-xs text-gray-400">Excellence in Education Since 2021</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6">Our mission is to provide quality education that empowers students to become lifelong learners, critical thinkers, and responsible citizens.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> About</a></li>
+                        <li><a href="team.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Our Team</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Courses</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Facilities</a></li>
+                        <li><a href="notices.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Notices</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Programs</h4>
+                    <ul class="space-y-3">
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Primary Level</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Lower Secondary</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Secondary Level</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Computer Lab</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Science Lab</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Library</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Contact Info</h4>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary-500"></i>
+                            <span>Chhorepatan, Pokhara-17, Kaski, Nepal</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-primary-500"></i>
+                            <span>+977-61-123456</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-primary-500"></i>
+                            <span>info@chhorepatan.edu.np</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-clock mt-1 mr-3 text-primary-500"></i>
+                            <span>Sunday - Friday: 10:00 AM - 4:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2023 Chhorepatan Secondary School. All rights reserved.</p>
+                <div class="mt-2 space-x-4">
+                    <a href="#" class="hover:text-white transition duration-300">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition duration-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize any JavaScript functionality here
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Tab functionality
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    button.classList.add('active');
+                    const tabId = button.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

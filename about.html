@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Chhorepatan Secondary School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        :root {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .page-header {
+            background-image: url('public/images/school-building.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .page-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 32, 96, 0.85) 0%, rgba(0, 64, 128, 0.85) 100%);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #0ea5e9;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f0f7ff',
+                            100: '#e0eeff',
+                            200: '#b0d0ff',
+                            300: '#80b3ff',
+                            400: '#5090ff',
+                            500: '#3070ff',
+                            600: '#1050ff',
+                            700: '#0040ff',
+                            800: '#0030c0',
+                            900: '#002080',
+                        },
+                        accent: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Top Bar -->
+    <div class="bg-primary-800 text-white py-1.5">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-6 text-sm mb-2 md:mb-0">
+                    <span class="flex items-center"><i class="fas fa-phone-alt mr-2"></i> +977-61-123456</span>
+                    <span class="flex items-center"><i class="fas fa-envelope mr-2"></i> info@chhorepatan.edu.np</span>
+                    <span class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Chhorepatan, Pokhara-17</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="flex items-center space-x-4">
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-4 border-l border-blue-700 pl-4">
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300 text-sm">Student Portal</a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300 text-sm">Staff Portal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Announcement Bar -->
+    <div class="bg-accent-500 text-white py-2">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center">
+                <div class="font-bold mr-4 bg-white text-accent-600 px-3 py-1 rounded-full text-sm">NOTICE</div>
+                <div class="marquee">
+                    <div class="marquee-content">
+                        🎓 Admissions open for 2024 academic year! | 🏆 Congratulations to our students for outstanding SEE results | 📢 Parent-Teacher meeting scheduled for October 15, 2023 | 🎭 Annual cultural program on December 18, 2023
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <img src="public/images/school-logo.png" alt="Chhorepatan Secondary School Logo" class="w-16 h-16 mr-4">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Chhorepatan Secondary School</h1>
+                        <p class="text-sm text-primary-600">Excellence in Education Since 2021</p>
+                    </div>
+                </div>
+                <nav class="hidden lg:flex">
+                    <ul class="flex space-x-8">
+                        <li><a href="index.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Home</a></li>
+                        <li><a href="about.html" class="nav-link active text-primary-600 font-medium transition duration-300">About</a></li>
+                        <li><a href="team.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Our Team</a></li>
+                        <li><a href="courses.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Courses</a></li>
+                        <li><a href="facilities.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Facilities</a></li>
+                        <li><a href="notices.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Notices</a></li>
+                        <li><a href="gallery.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Gallery</a></li>
+                        <li><a href="contact.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="registration.html" class="hidden md:block btn-primary bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-6 rounded-full transition duration-300 shadow-md">Apply Now</a>
+                    <div class="lg:hidden">
+                        <button class="text-gray-700 focus:outline-none">
+                            <i class="fas fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header py-32 relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-4">About Our School</h2>
+            <div class="flex items-center text-white/80">
+                <a href="index.html" class="hover:text-white">Home</a>
+                <span class="mx-2">/</span>
+                <span>About</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p class="text-primary-600 font-semibold mb-2">OUR HISTORY</p>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Excellence in Education Since 2021</h2>
+                    <p class="text-gray-600 mb-4">Chhorepatan Secondary School was established in 2021 with a vision to provide quality education to the students of Pokhara and surrounding areas. What started as a small institution has now grown into a reputable educational establishment known for academic excellence and holistic development.</p>
+                    <p class="text-gray-600 mb-4">The school was founded by a group of dedicated educators and community leaders who recognized the need for a modern educational institution that combines traditional values with contemporary teaching methods.</p>
+                    <p class="text-gray-600 mb-6">Over the years, we have expanded our facilities, enhanced our curriculum, and built a team of highly qualified teachers committed to nurturing the potential of every student.</p>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-primary-600 shadow-md">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Our Motto</h3>
+                        <p class="text-gray-600 italic">"Knowledge, Character, Excellence"</p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="public/images/school-building.png" alt="School Building" class="rounded-lg shadow-xl w-full h-auto z-10 relative">
+                    <div class="absolute -top-6 -left-6 w-24 h-24 border-4 border-primary-500 rounded-lg hidden md:block"></div>
+                    <div class="absolute -bottom-6 -right-6 w-24 h-24 border-4 border-accent-500 rounded-lg hidden md:block"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-primary-600 font-semibold mb-2">OUR PURPOSE</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Our Mission & Vision</h2>
+                <div class="w-24 h-1 bg-primary-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Guiding principles that drive everything we do at Chhorepatan Secondary School.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-white p-8 rounded-xl shadow-lg feature-card">
+                    <div class="w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center text-white mb-6">
+                        <i class="fas fa-bullseye text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Our Mission</h3>
+                    <p class="text-gray-600 mb-4">Our mission is to provide quality education that empowers students to become lifelong learners, critical thinkers, and responsible citizens who contribute positively to society.</p>
+                    <p class="text-gray-600">We strive to create a nurturing and inclusive learning environment where students can discover and develop their unique talents and abilities.</p>
+                    <div class="absolute top-4 right-4 text-primary-200">
+                        <i class="fas fa-bullseye text-4xl opacity-20"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg feature-card">
+                    <div class="w-16 h-16 bg-secondary-600 rounded-full flex items-center justify-center text-white mb-6">
+                        <i class="fas fa-eye text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Our Vision</h3>
+                    <p class="text-gray-600 mb-4">We envision Chhorepatan Secondary School as a center of educational excellence that prepares students to thrive in a rapidly changing world.</p>
+                    <p class="text-gray-600">Our vision is to be recognized as a leading educational institution that balances academic rigor with character development, producing graduates who are not only knowledgeable but also ethical, compassionate, and socially responsible.</p>
+                    <div class="absolute top-4 right-4 text-secondary-200">
+                        <i class="fas fa-eye text-4xl opacity-20"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-primary-600 font-semibold mb-2">OUR PRINCIPLES</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Our Core Values</h2>
+                <div class="w-24 h-1 bg-primary-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">These values guide our approach to education and shape our school culture.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-xl border-t-4 border-primary-600 shadow-lg feature-card">
+                    <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-brain text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Excellence</h3>
+                    <p class="text-gray-600">We strive for excellence in all aspects of education, encouraging students to pursue their highest potential in academics, sports, arts, and personal development.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl border-t-4 border-secondary-600 shadow-lg feature-card">
+                    <div class="w-16 h-16 bg-secondary-100 text-secondary-600 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-heart text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Integrity</h3>
+                    <p class="text-gray-600">We value honesty, ethical behavior, and moral courage, teaching students to make principled choices and take responsibility for their actions.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl border-t-4 border-accent-500 shadow-lg feature-card">
+                    <div class="w-16 h-16 bg-accent-100 text-accent-600 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-hands-helping text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Respect</h3>
+                    <p class="text-gray-600">We foster respect for self, others, and the environment, celebrating diversity and promoting inclusivity in our school community.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl border-t-4 border-green-600 shadow-lg feature-card">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-lightbulb text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Innovation</h3>
+                    <p class="text-gray-600">We embrace creativity, critical thinking, and innovation, preparing students to adapt to a rapidly changing world and find solutions to complex problems.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl border-t-4 border-purple-600 shadow-lg feature-card">
+                    <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Collaboration</h3>
+                    <p class="text-gray-600">We believe in the power of teamwork and collaboration, teaching students to work effectively with others and value diverse perspectives.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl border-t-4 border-red-600 shadow-lg feature-card">
+                    <div class="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-hand-holding-heart text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Social Responsibility</h3>
+                    <p class="text-gray-600">We encourage students to be socially responsible citizens who contribute positively to their communities and work towards the greater good.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-primary-600 font-semibold mb-2">OUR PRIDE</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Our Achievements</h2>
+                <div class="w-24 h-1 bg-primary-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">We take pride in the accomplishments of our students and our institution.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center feature-card">
+                    <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-trophy text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Academic Excellence</h3>
+                    <p class="text-gray-600">95% pass rate in SEE examinations with 40% students scoring A+ grades.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center feature-card">
+                    <div class="w-16 h-16 bg-secondary-100 text-secondary-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-medal text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Sports Championships</h3>
+                    <p class="text-gray-600">District champions in football, volleyball, and athletics competitions.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center feature-card">
+                    <div class="w-16 h-16 bg-accent-100 text-accent-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-microscope text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Science Innovations</h3>
+                    <p class="text-gray-600">First prize in the National Science Exhibition for two consecutive years.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center feature-card">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-award text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Community Service</h3>
+                    <p class="text-gray-600">Recognized for outstanding community service initiatives and environmental projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-20 bg-primary-700 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Join Our School Community</h2>
+                <p class="text-xl mb-8">Take the first step towards providing your child with an exceptional educational experience. Applications for the 2024 academic year are now open.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="registration.html" class="btn-primary bg-white text-primary-700 hover:bg-gray-100 font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-xl">Apply Now</a>
+                    <a href="contact.html" class="border-2 border-white hover:bg-white/10 text-white font-bold py-3 px-8 rounded-full transition duration-300">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <img src="public/images/school-logo.png" alt="Chhorepatan Secondary School Logo" class="w-16 h-16 mr-4 bg-white p-2 rounded-lg">
+                        <div>
+                            <h3 class="text-xl font-bold">Chhorepatan Secondary School</h3>
+                            <p class="text-xs text-gray-400">Excellence in Education Since 2021</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6">Our mission is to provide quality education that empowers students to become lifelong learners, critical thinkers, and responsible citizens.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> About</a></li>
+                        <li><a href="team.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Our Team</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Courses</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Facilities</a></li>
+                        <li><a href="notices.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Notices</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Programs</h4>
+                    <ul class="space-y-3">
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Primary Level</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Lower Secondary</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Secondary Level</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Computer Lab</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Science Lab</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Library</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Contact Info</h4>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary-500"></i>
+                            <span>Chhorepatan, Pokhara-17, Kaski, Nepal</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-primary-500"></i>
+                            <span>+977-61-123456</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-primary-500"></i>
+                            <span>info@chhorepatan.edu.np</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-clock mt-1 mr-3 text-primary-500"></i>
+                            <span>Sunday - Friday: 10:00 AM - 4:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2023 Chhorepatan Secondary School. All rights reserved.</p>
+                <div class="mt-2 space-x-4">
+                    <a href="#" class="hover:text-white transition duration-300">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition duration-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize any JavaScript functionality here
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

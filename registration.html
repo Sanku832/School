@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Chhorepatan Secondary School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        :root {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .page-header {
+            background-image: url('public/images/school-building.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .page-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 32, 96, 0.85) 0%, rgba(0, 64, 128, 0.85) 100%);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #0ea5e9;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .step-item {
+            position: relative;
+        }
+        
+        .step-item::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            height: 2px;
+            width: 100%;
+            background-color: #e0f2fe;
+            transform: translateY(-50%);
+            z-index: -1;
+        }
+        
+        .step-item:last-child::after {
+            display: none;
+        }
+        
+        .step-number {
+            transition: all 0.3s ease;
+        }
+        
+        .step-item.active .step-number {
+            background-color: #0ea5e9;
+            color: white;
+        }
+        
+        .step-item.completed .step-number {
+            background-color: #10b981;
+            color: white;
+        }
+        
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.active {
+            display: block;
+        }
+        
+        .fee-card {
+            transition: all 0.3s ease;
+        }
+        
+        .fee-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .process-card {
+            transition: all 0.3s ease;
+        }
+        
+        .process-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f0f7ff',
+                            100: '#e0eeff',
+                            200: '#b0d0ff',
+                            300: '#80b3ff',
+                            400: '#5090ff',
+                            500: '#3070ff',
+                            600: '#1050ff',
+                            700: '#0040ff',
+                            800: '#0030c0',
+                            900: '#002080',
+                        },
+                        accent: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Top Bar -->
+    <div class="bg-primary-800 text-white py-1.5">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-6 text-sm mb-2 md:mb-0">
+                    <span class="flex items-center"><i class="fas fa-phone-alt mr-2"></i> +977-61-123456</span>
+                    <span class="flex items-center"><i class="fas fa-envelope mr-2"></i> info@chhorepatan.edu.np</span>
+                    <span class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Chhorepatan, Pokhara-17</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="flex items-center space-x-4">
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-4 border-l border-blue-700 pl-4">
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300 text-sm">Student Portal</a>
+                        <a href="#" class="text-white hover:text-accent-300 transition duration-300 text-sm">Staff Portal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Announcement Bar -->
+    <div class="bg-accent-500 text-white py-2">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center">
+                <div class="font-bold mr-4 bg-white text-accent-600 px-3 py-1 rounded-full text-sm">NOTICE</div>
+                <div class="marquee">
+                    <div class="marquee-content">
+                        🎓 Admissions open for 2024 academic year! | 🏆 Congratulations to our students for outstanding SEE results | 📢 Parent-Teacher meeting scheduled for October 15, 2023 | 🎭 Annual cultural program on December 18, 2023
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <img src="public/images/school-logo.png" alt="Chhorepatan Secondary School Logo" class="w-16 h-16 mr-4">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Chhorepatan Secondary School</h1>
+                        <p class="text-sm text-primary-600">Excellence in Education Since 2021</p>
+                    </div>
+                </div>
+                <nav class="hidden lg:flex">
+                    <ul class="flex space-x-8">
+                        <li><a href="index.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Home</a></li>
+                        <li><a href="about.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">About</a></li>
+                        <li><a href="team.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Our Team</a></li>
+                        <li><a href="courses.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Courses</a></li>
+                        <li><a href="facilities.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Facilities</a></li>
+                        <li><a href="notices.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Notices</a></li>
+                        <li><a href="gallery.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Gallery</a></li>
+                        <li><a href="contact.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="registration.html" class="hidden md:block btn-primary bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-6 rounded-full transition duration-300 shadow-md">Apply Now</a>
+                    <div class="lg:hidden">
+                        <button class="text-gray-700 focus:outline-none">
+                            <i class="fas fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header py-32 relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-4">Student Registration</h2>
+            <div class="flex items-center text-white/80">
+                <a href="index.html" class="hover:text-white">Home</a>
+                <span class="mx-2">/</span>
+                <span>Registration</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Process Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-primary-600 font-semibold mb-2">ADMISSION PROCESS</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">How to Apply</h2>
+                <div class="w-24 h-1 bg-primary-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Follow these steps to apply for admission to Chhorepatan Secondary School for the 2024 academic year.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="process-card bg-white p-6 rounded-xl shadow-md text-center">
+                    <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Submit Application</h3>
+                    <p class="text-gray-600">Complete the online application form or visit our admission office to obtain and submit a physical application.</p>
+                </div>
+                
+                <div class="process-card bg-white p-6 rounded-xl shadow-md text-center">
+                    <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Entrance Assessment</h3>
+                    <p class="text-gray-600">Students will take an entrance assessment to determine their academic level and learning needs.</p>
+                </div>
+                
+                <div class="process-card bg-white p-6 rounded-xl shadow-md text-center">
+                    <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Interview</h3>
+                    <p class="text-gray-600">Parents and students will be invited for an interview with school administrators or faculty members.</p>
+                </div>
+                
+                <div class="process-card bg-white p-6 rounded-xl shadow-md text-center">
+                    <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold">4</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Admission Decision</h3>
+                    <p class="text-gray-600">Admission decisions will be communicated to parents within two weeks of completing the process.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-primary-50 p-8 rounded-xl border-l-4 border-primary-500">
+                <div class="flex items-start">
+                    <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                        <i class="fas fa-info-circle text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Important Information</h3>
+                        <p class="text-gray-600 mb-4">Applications for the 2024 academic year are now open. The deadline for submission is November 30, 2023. Entrance assessments will be conducted from December 5 to December 15, 2023.</p>
+                        <p class="text-gray-600">For more information, please contact our Admissions Office at +977-61-123457 or email us at admissions@chhorepatan.edu.np.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-primary-600 font-semibold mb-2">APPLY NOW</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Registration Form</h2>
+                <div class="w-24 h-1 bg-primary-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Please fill out the form below to apply for admission to Chhorepatan Secondary School.</p>
+            </div>
+            
+            <!-- Form Steps -->
+            <div class="max-w-5xl mx-auto mb-12">
+                <div class="flex justify-between">
+                    <div class="step-item active flex-1 text-center">
+                        <div class="step-number w-10 h-10 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <span>1</span>
+                        </div>
+                        <p class="text-sm font-medium">Personal Information</p>
+                    </div>
+                    <div class="step-item flex-1 text-center">
+                        <div class="step-number w-10 h-10 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <span>2</span>
+                        </div>
+                        <p class="text-sm font-medium">Academic Information</p>
+                    </div>
+                    <div class="step-item flex-1 text-center">
+                        <div class="step-number w-10 h-10 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <span>3</span>
+                        </div>
+                        <p class="text-sm font-medium">Parent/Guardian Information</p>
+                    </div>
+                    <div class="step-item flex-1 text-center">
+                        <div class="step-number w-10 h-10 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <span>4</span>
+                        </div>
+                        <p class="text-sm font-medium">Review & Submit</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Registration Form -->
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+                <form id="registration-form">
+                    <!-- Step 1: Personal Information -->
+                    <div class="form-step active" id="step-1">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Personal Information</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="first-name" class="block text-gray-700 font-medium mb-2">First Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="first-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                            </div>
+                            <div>
+                                <label for="last-name" class="block text-gray-700 font-medium mb-2">Last Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="last-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="dob" class="block text-gray-700 font-medium mb-2">Date of Birth <span class="text-red-500">*</span></label>
+                                <input type="date" id="dob" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                            </div>
+                            <div>
+                                <label for="gender" class="block text-gray-700 font-medium mb-2">Gender <span class="text-red-500">*</span></label>
+                                <select id="gender" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="address" class="block text-gray-700 font-medium mb-2">Address <span class="text-red-500">*</span></label>
+                            <input type="text" id="address" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-3 gap-6 mb-6">
+                            <div>
+                                <label for="city" class="block text-gray-700 font-medium mb-2">City <span class="text-red-500">*</span></label>
+                                <input type="text" id="city" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                            </div>
+                            <div>
+                                <label for="district" class="block text-gray-700 font-medium mb-2">District <span class="text-red-500">*</span></label>
+                                <input type="text" id="district" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                            </div>
+                            <div>
+                                <label for="province" class="block text-gray-700 font-medium mb-2">Province <span class="text-red-500">*</span></label>
+                                <select id="province" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                                    <option value="">Select Province</option>
+                                    <option value="province1">Province 1</option>
+                                    <option value="province2">Province 2</option>
+                                    <option value="bagmati">Bagmati Province</option>
+                                    <option value="gandaki">Gandaki Province</option>
+                                    <option value="lumbini">Lumbini Province</option>
+                                    <option value="karnali">Karnali Province</option>
+                                    <option value="sudurpaschim">Sudurpaschim Province</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-end mt-8">
+                            <button type="button" class="next-step btn-primary bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 shadow-md hover:shadow-lg">Next Step</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Academic Information -->
+                    <div class="form-step" id="step-2">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Academic Information</h3>
+                        
+                        <div class="mb-6">
+                            <label for="grade-applying" class="block text-gray-700 font-medium mb-2">Grade Applying For <span class="text-red-500">*</span></label>
+                            <select id="grade-applying" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                                <option value="">Select Grade</option>
+                                <option value="1">Grade 1</option>
+                                <option value="2">Grade 2</option>
+                                <option value="3">Grade 3</option>
+                                <option value="4">Grade 4</option>
+                                <option value="5">Grade 5</option>
+                                <option value="6">Grade 6</option>
+                                <option value="7">Grade 7</option>
+                                <option value="8">Grade 8</option>
+                                <option value="9">Grade 9</option>
+                                <option value="10">Grade 10</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="previous-school" class="block text-gray-700 font-medium mb-2">Previous School (if any)</label>
+                            <input type="text" id="previous-school" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="last-grade" class="block text-gray-700 font-medium mb-2">Last Grade Completed</label>
+                                <select id="last-grade" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                                    <option value="">Select Grade</option>
+                                    <option value="none">None (New Student)</option>
+                                    <option value="kg">Kindergarten</option>
+                                    <option value="1">Grade 1</option>
+                                    <option value="2">Grade 2</option>
+                                    <option value="3">Grade 3</option>
+                                    <option value="4">Grade 4</option>
+                                    <option value="5">Grade 5</option>
+                                    <option value="6">Grade 6</option>
+                                    <option value="7">Grade 7</option>
+                                    <option value="8">Grade 8</option>
+                                    <option value="9">Grade 9</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="academic-year" class="block text-gray-700 font-medium mb-2">Academic Year <span class="text-red-500">*</span></label>
+                                <select id="academic-year" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                                    <option value="">Select Academic Year</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-medium mb-2">Upload Previous Academic Records (if any)</label>
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                                <input type="file" id="academic-records" class="hidden">
+                                <label for="academic-records" class="cursor-pointer">
+                                    <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-2"></i>
+                                    <p class="text-gray-500">Click to upload or drag and drop</p>
+                                    <p class="text-gray-400 text-sm">PDF, JPG, or PNG (Max. 5MB)</p>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between mt-8">
+                            <button type="button" class="prev-step bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-8 rounded-lg transition duration-300">Previous</button>
+                            <button type="button" class="next-step btn-primary bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 shadow-md hover:shadow-lg">Next Step</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Parent/Guardian Information -->
+                    <div class="form-step" id="step-3">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Parent/Guardian Information</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="parent-name" class="block text-gray-700 font-medium mb-2">Parent/Guardian Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="parent-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                            </div>
+                            <div>
+                                <label for="relationship" class="block text-gray-700 font-medium mb-2">Relationship <span class="text-red-500">*</span></label>
+                                <select id="relationship" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                                    <option value="">Select Relationship</option>
+                                    <option value="father">Father</option>
+                                    <option value="mother">Mother</option>
+                                    <option value="guardian">Guardian</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="parent-phone" class="block text-gray-700 font-medium mb-2">Phone Number <span class="text-red-500">*</span></label>
+                                <input type="tel" id="parent-phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                            </div>
+                            <div>
+                                <label for="parent-email" class="block text-gray-700 font-medium mb-2">Email Address <span class="text-red-500">*</span></label>
+                                <input type="email" id="parent-email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="parent-address" class="block text-gray-700 font-medium mb-2">Address <span class="text-red-500">*</span></label>
+                            <input type="text" id="parent-address" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="occupation" class="block text-gray-700 font-medium mb-2">Occupation</label>
+                            <input type="text" id="occupation" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-medium mb-2">Emergency Contact (if different from above)</label>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <input type="text" id="emergency-name" placeholder="Name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                                </div>
+                                <div>
+                                    <input type="tel" id="emergency-phone" placeholder="Phone Number" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between mt-8">
+                            <button type="button" class="prev-step bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-8 rounded-lg transition duration-300">Previous</button>
+                            <button type="button" class="next-step btn-primary bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 shadow-md hover:shadow-lg">Next Step</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4: Review & Submit -->
+                    <div class="form-step" id="step-4">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Review & Submit</h3>
+                        
+                        <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                            <h4 class="text-lg font-bold text-gray-800 mb-4">Personal Information</h4>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-gray-600 font-medium">Name:</p>
+                                    <p class="text-gray-800" id="review-name">John Doe</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 font-medium">Date of Birth:</p>
+                                    <p class="text-gray-800" id="review-dob">01/01/2010</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 font-medium">Gender:</p>
+                                    <p class="text-gray-800" id="review-gender">Male</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 font-medium">Address:</p>
+                                    <p class="text-gray-800" id="review-address">Chhorepatan, Pokhara-17</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                            <h4 class="text-lg font-bold text-gray-800 mb-4">Academic Information</h4>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-gray-600 font-medium">Grade Applying For:</p>
+                                    <p class="text-gray-800" id="review-grade">Grade 5</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 font-medium">Academic Year:</p>
+                                    <p class="text-gray-800" id="review-year">2024</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 font-medium">Previous School:</p>
+                                    <p class="text-gray-800" id="review-school">ABC School</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 font-medium">Last Grade Completed:</p>
+                                    <p class="text-gray-800" id="review-last-grade">Grade 4</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                            <h4 class="text-lg font-bold text-gray-800 mb-4">Parent/Guardian Information</h4>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-gray-600 font-medium">Name:</p>
+                                    <p class="text-gray-800" id="review-parent-name">Jane Doe</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 font-medium">Relationship:</p>
+                                    <p class="text-gray-800" id="review-relationship">Mother</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 font-medium">Phone Number:</p>
+                                    <p class="text-gray-800" id="review-parent-phone">+977-9801234567</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 font-medium">Email Address:</p>
+                                    <p class="text-gray-800" id="review-parent-email">jane@example.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="w-5 h-5 text-primary-600 border-gray-300 rounded focus:ring-primary-500" required>
+                                <span class="ml-2 text-gray-700">I certify that all the information provided is accurate and complete. I understand that any false or incomplete information may result in the rejection of this application or dismissal from the school.</span>
+                            </label>
+                        </div>
+                        
+                        <div class="flex justify-between mt-8">
+                            <button type="button" class="prev-step bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-8 rounded-lg transition duration-300">Previous</button>
+                            <button type="submit" class="btn-primary bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 shadow-md hover:shadow-lg">Submit Application</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fee Structure Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-primary-600 font-semibold mb-2">FEE STRUCTURE</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Academic Year 2024</h2>
+                <div class="w-24 h-1 bg-primary-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Below is the fee structure for the 2024 academic year. Please note that fees are subject to change.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="fee-card bg-white p-6 rounded-xl shadow-md border-t-4 border-primary-500">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Primary Level</h3>
+                    <p class="text-gray-600 mb-6">Grades 1-5</p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-gray-600">Admission Fee</span>
+                            <span class="font-semibold text-gray-800">Rs. 5,000</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-gray-600">Annual Fee</span>
+                            <span class="font-semibold text-gray-800">Rs. 10,000</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-gray-600">Monthly Tuition Fee</span>
+                            <span class="font-semibold text-gray-800">Rs. 2,500</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-gray-600">Computer Lab Fee</span>
+                            <span class="font-semibold text-gray-800">Rs. 1,000</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-gray-600">Library Fee</span>
+                            <span class="font-semibold text-gray-800">Rs. 500</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-800">Total Annual Cost</span>
+                            <span class="font-bold text-primary-600">Rs. 46,500</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">*Excluding transportation and uniform costs</p>
+                    </div>
+                </div>
+                
+                <div class="fee-card bg-white p-6 rounded-xl shadow-md border-t-4 border-secondary-500">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Lower Secondary</h3>
+                    <p class="text-gray-600 mb-6">Grades 6-8</p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-gray-600">Admission Fee</span>
+                            <span class="font-semibold text-gray-800">Rs. 7,000</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-gray-600">Annual Fee</span>
+                            <span class="font-semibold text-gray-800">Rs. 12,000</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-gray-600">Monthly Tuition Fee</span>
+                            <span class="font-semibold text-gray-800">Rs. 3,000</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-gray-600">Computer Lab Fee</span>
+                            <span class="font-semibold text-gray-800">Rs. 1,500</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-gray-600">Science Lab Fee</span>
+                            <span class="font-semibold text-gray-800">Rs. 1,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-800">Total Annual Cost</span>
+                            <span class="font-bold text-secondary-600">Rs. 56,500</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">*Excluding transportation and uniform costs</p>
+                    </div>
+                </div>
+                
+                <div class="fee-card bg-white p-6 rounded-xl shadow-md border-t-4 border-accent-500">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Secondary Level</h3>
+                    <p class="text-gray-600 mb-6">Grades 9-10</p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-gray-600">Admission Fee</span>
+                            <span class="font-semibold text-gray-800">Rs. 10,000</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-gray-600">Annual Fee</span>
+                            <span class="font-semibold text-gray-800">Rs. 15,000</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-gray-600">Monthly Tuition Fee</span>
+                            <span class="font-semibold text-gray-800">Rs. 3,500</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-gray-600">Computer Lab Fee</span>
+                            <span class="font-semibold text-gray-800">Rs. 2,000</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                            <span class="text-gray-600">Science Lab Fee</span>
+                            <span class="font-semibold text-gray-800">Rs. 1,500</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-gray-800">Total Annual Cost</span>
+                            <span class="font-bold text-accent-600">Rs. 69,500</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">*Excluding transportation and uniform costs</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-primary-50 p-8 rounded-xl border-l-4 border-primary-500">
+                <div class="flex items-start">
+                    <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                        <i class="fas fa-info-circle text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Additional Information</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-600 mt-1 mr-2"></i>
+                                <span>Fees can be paid annually, bi-annually, or monthly as per convenience.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-600 mt-1 mr-2"></i>
+                                <span>Sibling discount of 10% on tuition fees is available for the second child and 15% for the third child.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-600 mt-1 mr-2"></i>
+                                <span>Transportation fees vary depending on the distance and route. Please contact the administrative office for details.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-600 mt-1 mr-2"></i>
+                                <span>Scholarships are available for meritorious and economically disadvantaged students. Please inquire at the admission office.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-20 bg-primary-700 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Join Our School?</h2>
+                <p class="text-xl mb-8">Take the first step towards providing your child with an exceptional educational experience. Applications for the 2024 academic year are now open.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#" class="btn-primary bg-white text-primary-700 hover:bg-gray-100 font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-xl">Apply Now</a>
+                    <a href="contact.html" class="border-2 border-white hover:bg-white/10 text-white font-bold py-3 px-8 rounded-full transition duration-300">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <img src="public/images/school-logo.png" alt="Chhorepatan Secondary School Logo" class="w-16 h-16 mr-4 bg-white p-2 rounded-lg">
+                        <div>
+                            <h3 class="text-xl font-bold">Chhorepatan Secondary School</h3>
+                            <p class="text-xs text-gray-400">Excellence in Education Since 2021</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6">Our mission is to provide quality education that empowers students to become lifelong learners, critical thinkers, and responsible citizens.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> About</a></li>
+                        <li><a href="team.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Our Team</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Courses</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Facilities</a></li>
+                        <li><a href="notices.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Notices</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Programs</h4>
+                    <ul class="space-y-3">
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Primary Level</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Lower Secondary</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Secondary Level</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Computer Lab</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Science Lab</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs text-primary-500"></i> Library</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2">Contact Info</h4>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary-500"></i>
+                            <span>Chhorepatan, Pokhara-17, Kaski, Nepal</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-primary-500"></i>
+                            <span>+977-61-123456</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-primary-500"></i>
+                            <span>info@chhorepatan.edu.np</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-clock mt-1 mr-3 text-primary-500"></i>
+                            <span>Sunday - Friday: 10:00 AM - 4:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2023 Chhorepatan Secondary School. All rights reserved.</p>
+                <div class="mt-2 space-x-4">
+                    <a href="#" class="hover:text-white transition duration-300">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition duration-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize any JavaScript functionality here
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Multi-step form functionality
+            const formSteps = document.querySelectorAll('.form-step');
+            const stepItems = document.querySelectorAll('.step-item');
+            const nextButtons = document.querySelectorAll('.next-step');
+            const prevButtons = document.querySelectorAll('.prev-step');
+            
+            // Next step buttons
+            nextButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Find the current active step
+                    const activeStep = document.querySelector('.form-step.active');
+                    const activeStepIndex = Array.from(formSteps).indexOf(activeStep);
+                    
+                    // Hide current step
+                    activeStep.classList.remove('active');
+                    
+                    // Show next step
+                    formSteps[activeStepIndex + 1].classList.add('active');
+                    
+                    // Update step indicators
+                    stepItems[activeStepIndex].classList.add('completed');
+                    stepItems[activeStepIndex + 1].classList.add('active');
+                    
+                    // Scroll to top of form
+                    window.scrollTo({
+                        top: document.getElementById('registration-form').offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Previous step buttons
+            prevButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Find the current active step
+                    const activeStep = document.querySelector('.form-step.active');
+                    const activeStepIndex = Array.from(formSteps).indexOf(activeStep);
+                    
+                    // Hide current step
+                    activeStep.classList.remove('active');
+                    
+                    // Show previous step
+                    formSteps[activeStepIndex - 1].classList.add('active');
+                    
+                    // Update step indicators
+                    stepItems[activeStepIndex].classList.remove('active');
+                    stepItems[activeStepIndex - 1].classList.remove('completed');
+                    stepItems[activeStepIndex - 1].classList.add('active');
+                    
+                    // Scroll to top of form
+                    window.scrollTo({
+                        top: document.getElementById('registration-form').offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Form submission (placeholder)
+            document.getElementById('registration-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Form submitted successfully! In a real implementation, this would send the data to the server.');
+            });
+        });
+    </script>
+</body>
+</html>
+
